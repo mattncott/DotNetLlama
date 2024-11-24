@@ -14,12 +14,12 @@ on:
 jobs:
   test:
     name: Test
-    uses: mattncott/mattncott-common/.github/workflows/test-dotnet.yml@main
+    uses: mattncott/workflows/.github/workflows/test-dotnet.yml@main
     secrets: inherit
 
   release:
     name: Release
-    uses: mattncott/mattncott-common/.github/workflows/release-to-nuget.yml@main
+    uses: mattncott/workflows/.github/workflows/release-to-nuget.yml@main
     secrets: inherit
     with:
       csproj-location: DotNetLlama/DotNetLlama.csproj
@@ -27,7 +27,7 @@ jobs:
 
   version:
     name: Increase Version
-    uses: mattncott/mattncott-common/.github/workflows/increase-dotnet-version.yml@main
+    uses: mattncott/workflows/.github/workflows/increase-dotnet-version.yml@main
     secrets: inherit
     with:
       csproj-location: DotNetLlama/DotNetLlama.csproj
