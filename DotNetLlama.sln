@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetLlama", "DotNetLlama\DotNetLlama.csproj", "{0087E355-EFFE-460A-B23D-FDCEB5AD1897}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetLlama.Test", "DotNetLlama.Test\DotNetLlama.Test.csproj", "{E939DE8A-544A-4FF5-89B7-6340DA108A18}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0087E355-EFFE-460A-B23D-FDCEB5AD1897}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0087E355-EFFE-460A-B23D-FDCEB5AD1897}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0087E355-EFFE-460A-B23D-FDCEB5AD1897}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0087E355-EFFE-460A-B23D-FDCEB5AD1897}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E939DE8A-544A-4FF5-89B7-6340DA108A18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E939DE8A-544A-4FF5-89B7-6340DA108A18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E939DE8A-544A-4FF5-89B7-6340DA108A18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E939DE8A-544A-4FF5-89B7-6340DA108A18}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
