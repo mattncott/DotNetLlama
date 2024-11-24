@@ -2,7 +2,8 @@ namespace DotNetLlama.Interfaces
 {
     public interface IDotNetLlamaOptions
     {
-        string ApiToken { set; }
-        string LlamaBaseUrl { set; }
+        string ApiToken { get; set; }
+        string LlamaBaseUrl { get; set; }
+        int WaitInterval { get; set; }
     }
 }

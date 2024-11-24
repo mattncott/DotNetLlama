@@ -1,7 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
 using DotNetLlama.Extensions;
-using NSubstitute;
-using FluentAssertions;
 using Microsoft.Extensions.Configuration;
 using DotNetLlama.Interfaces;
 
@@ -55,9 +53,21 @@ namespace DotNetLlama.Test.Extensions
         [Test]
         public void RegisterDotNetLlama_OptionsAreProvided_RegistersIDotNetLlamaOptions()
         {
-            var serviceCollection = new ServiceCollection();
-            var serviceProvider = serviceCollection.RegisterDotNetLlama(_configuration).BuildServiceProvider(true);
+            var serviceProvider = BuildServiceProvider();
             serviceProvider.GetRequiredService<IDotNetLlamaOptions>();
+        }
+
+        [TestCase(typeof(IOllamaRestClient))]
+        public void RegisterDependencies_CorrectlyRegisters(Type requiredService)
+        {
+            var provider = BuildServiceProvider();
+            provider.GetRequiredService(requiredService);
+        }
+
+        private ServiceProvider BuildServiceProvider()
+        {
+            var serviceCollection = new ServiceCollection();
+            return serviceCollection.RegisterDotNetLlama(_configuration).BuildServiceProvider(true);
         }
     }
 }

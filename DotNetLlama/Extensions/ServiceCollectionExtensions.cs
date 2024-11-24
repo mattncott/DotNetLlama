@@ -30,8 +30,11 @@ namespace DotNetLlama.Extensions
 
         public static IServiceCollection RegisterDotNetLlama(this IServiceCollection services, IConfiguration configuration)
         {
-            services = services.RegisterDotNetLlamaOptions(configuration);
-            services = services.RegisterRestClient();
+            services.RegisterDotNetLlamaOptions(configuration)
+                .RegisterRestClient()
+                .AddLogging();
+
+            services.AddSingleton<IOllamaRestClient, OllamaRestClient>();
 
             return services;
         }
