@@ -1,10 +1,10 @@
-using System.Runtime.Serialization;
+using Mattncott.Attributes;
 
 namespace DotNetLlama.Enums
 {
     public enum OllamaFormat
     {
-        [EnumMember(Value = "json")]
-        Json
+        [StringValue("json")]
+        Json = 0
     }
 }

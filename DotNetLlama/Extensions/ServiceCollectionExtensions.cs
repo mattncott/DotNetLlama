@@ -1,3 +1,4 @@
+using System.Text.Json;
 using DotNetLlama.Interfaces;
 using Mattncott.Extensions;
 using Microsoft.Extensions.Configuration;
@@ -31,12 +32,26 @@ namespace DotNetLlama.Extensions
         public static IServiceCollection RegisterDotNetLlama(this IServiceCollection services, IConfiguration configuration)
         {
             services.RegisterDotNetLlamaOptions(configuration)
-                .RegisterRestClient()
-                .AddLogging();
+                .AddLogging()
+                .RegisterRestClient(
+                    jsonSerializerSettings: GetJsonSerializerSettings());
 
             services.AddSingleton<IOllamaRestClient, OllamaRestClient>();
+            services.AddSingleton<IJsonSerializer, JsonSerializer>();
 
             return services;
+        }
+
+        private static JsonSerializerOptions GetJsonSerializerSettings()
+        {
+            var serializerSettings = new JsonSerializerOptions();
+
+            foreach (var converter in JsonConverters.AllSystemTextJson())
+            {
+                serializerSettings.Converters.Add(converter);
+            }
+
+            return serializerSettings;
         }
     }
 }

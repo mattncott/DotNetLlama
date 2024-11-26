@@ -7,20 +7,22 @@ using RestSharp;
 
 namespace DotNetLlama
 {
-    // TODO Rename this I don't like it
     public class OllamaRestClient : IOllamaRestClient
     {
         private readonly IDotNetLlamaOptions _options;
         private readonly IRestClient _restClient;
+        private readonly IJsonSerializer _jsonSerializer;
         private readonly ILogger _logger;
 
         public OllamaRestClient(
             IDotNetLlamaOptions options,
             IRestClient restClient,
+            IJsonSerializer jsonSerializer,
             ILoggerFactory factory)
         {
             _options = options;
             _restClient = restClient;
+            _jsonSerializer = jsonSerializer;
             _logger = factory.CreateLogger<OllamaRestClient>();
         }
 
@@ -60,7 +62,11 @@ namespace DotNetLlama
         {
             var restRequest = new RestRequest();
             restRequest.AddHeader("Authorization", $"Bearer {_options.ApiToken}");
-            restRequest.AddBody(ollamaRequest);
+            restRequest.AddHeader("Content-Type", "application/json");
+
+            var serializedBody = _jsonSerializer.Serialize(ollamaRequest);
+
+            restRequest.AddJsonBody(serializedBody);
 
             return await _restClient.PostAsync<OllamaResponse>(restRequest);
         }
