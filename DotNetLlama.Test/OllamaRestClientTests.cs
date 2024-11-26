@@ -21,6 +21,7 @@ namespace DotNetLlama.Test
             _ollamaRestClient = new OllamaRestClient(
                 _options,
                 _restClient,
+                Substitute.For<IJsonSerializer>(),
                 Substitute.For<ILoggerFactory>());
         }
 
