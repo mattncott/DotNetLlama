@@ -7,13 +7,9 @@ using Microsoft.Extensions.Hosting;
 
 // Uncomment below to enable trace logging on IRestClient
 // Trace.Listeners.Add(new ConsoleTraceListener());
-
 var configuration = new ConfigurationBuilder()
-                .AddInMemoryCollection(new Dictionary<string, string?>()
-                {
-                    ["Ollama:ApiToken"] = "sk-9722191ea18a471c825fc01aae3c434b",
-                    ["Ollama:LlamaBaseUrl"] = "https://deepthought.mattncott.co.uk/ollama/api/"
-                })
+                // This requires creating as it is not saved in GIT
+                .AddJsonFile($"appsettings.development.json", true, true)
                 .Build();
 
 var builder = Host.CreateApplicationBuilder(args);
